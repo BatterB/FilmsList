@@ -21,9 +21,9 @@ class MoviesActivity : AppCompatActivity() {
     @Inject
     lateinit var adapter: MoviesAdapter
 
-    var offset = 0
+    private var offset = 0
 
-    var isLoading = false
+    private var isLoading = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         (applicationContext as FilmsList).appComponent.inject(this)
