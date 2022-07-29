@@ -48,8 +48,8 @@ class MoviesActivity : AppCompatActivity() {
                 val visibleItemCount = layoutManager.childCount
                 val totalItemCount = layoutManager.itemCount
                 val firstVisibleItems = layoutManager.findFirstVisibleItemPosition()
-                if (!isLoading)
-                    if ( (visibleItemCount+firstVisibleItems) >= totalItemCount-10) {
+                if (!isLoading) //проверка не загружается ли уже что то в данный момент
+                    if ( (visibleItemCount+firstVisibleItems) >= totalItemCount-10) { // если просматривастя последние 10 элементов то начинается подргрузка новых
                         isLoading = true
                         offset += 1
                         viewModel.loadMovies(offset)
