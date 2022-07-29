@@ -4,10 +4,19 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/dimae/AndroidStudioProjects/FilmsList/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/Users/dimae/AndroidStudioProjects/FilmsList/app/src/main/res/drawable/backgroud_splash.xml" value="0.1" />
+        <entry key="..\:/Users/dimae/AndroidStudioProjects/FilmsList/app/src/main/res/drawable/background_splash.xml" value="0.1" />
+        <entry key="..\:/Users/dimae/AndroidStudioProjects/FilmsList/app/src/main/res/drawable/backgroung_splash.xml" value="0.1" />
         <entry key="..\:/Users/dimae/AndroidStudioProjects/FilmsList/app/src/main/res/drawable/corners_bg.xml" value="0.1" />
+        <entry key="..\:/Users/dimae/AndroidStudioProjects/FilmsList/app/src/main/res/drawable/ic_film_background.xml" value="0.1" />
+        <entry key="..\:/Users/dimae/AndroidStudioProjects/FilmsList/app/src/main/res/drawable/ic_film_foreground.xml" value="0.1" />
+        <entry key="..\:/Users/dimae/AndroidStudioProjects/FilmsList/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/dimae/AndroidStudioProjects/FilmsList/app/src/main/res/drawable/ic_photo_camera.xml" value="0.1" />
         <entry key="..\:/Users/dimae/AndroidStudioProjects/FilmsList/app/src/main/res/layout/activity_movies_list.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/dimae/AndroidStudioProjects/FilmsList/app/src/main/res/layout/activity_splash.xml" value="0.1" />
         <entry key="..\:/Users/dimae/AndroidStudioProjects/FilmsList/app/src/main/res/layout/movie_item.xml" value="0.176" />
         <entry key="..\:/Users/dimae/AndroidStudioProjects/FilmsList/app/src/main/res/layout/movies_activity.xml" value="0.2" />
+        <entry key="..\:/Users/dimae/AndroidStudioProjects/FilmsList/app/src/main/res/mipmap-anydpi-v26/ic_film.xml" value="0.1" />
       </map>
     </option>
   </component>
