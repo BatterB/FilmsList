@@ -21,10 +21,6 @@ class MoviesActivity : AppCompatActivity() {
     @Inject
     lateinit var adapter: MoviesAdapter
 
-    private var offset = 0
-
-    private var isLoading = false
-
     override fun onCreate(savedInstanceState: Bundle?) {
         (applicationContext as FilmsList).appComponent.inject(this)
         super.onCreate(savedInstanceState)
@@ -35,7 +31,7 @@ class MoviesActivity : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerViewMovies.adapter = adapter
         binding.recyclerViewMovies.layoutManager = layoutManager
-        viewModel.loadMovies(offset)
+        viewModel.loadMovies()
         setObserver()
         setListener(layoutManager)
 
@@ -48,12 +44,11 @@ class MoviesActivity : AppCompatActivity() {
                 val visibleItemCount = layoutManager.childCount
                 val totalItemCount = layoutManager.itemCount
                 val firstVisibleItems = layoutManager.findFirstVisibleItemPosition()
-                if (!isLoading) //проверка не загружается ли уже что то в данный момент
-                    if ( (visibleItemCount+firstVisibleItems) >= totalItemCount-10) { // если просматривастя последние 10 элементов то начинается подргрузка новых
-                        isLoading = true
-                        offset += 1
-                        viewModel.loadMovies(offset)
+                if (!viewModel.isLoading) {//проверка не загружается ли уже что то в данный момент
+                    if ((visibleItemCount + firstVisibleItems) >= totalItemCount - 10) { // если просматривастя последние 10 элементов то начинается подргрузка новых
+                        viewModel.loadMovies()
                     }
+                }
             }
         })
     }
@@ -61,9 +56,9 @@ class MoviesActivity : AppCompatActivity() {
     private fun setObserver() {
         viewModel.movieList.observe(this){
             if (it != null){
-                adapter.movies.addAll(it)
-                adapter.notifyDataSetChanged()
-                isLoading = false
+                val newMovieList = adapter.movies.toMutableList()
+                newMovieList.addAll(it)
+                adapter.movies = newMovieList
             }
         }
     }

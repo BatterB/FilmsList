@@ -2,10 +2,32 @@ package com.batterb.filmslist.presentation.movies
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.batterb.domain.models.MovieModel
 import com.batterb.filmslist.databinding.MovieItemBinding
 import com.bumptech.glide.Glide
+
+class MovieDiffCallback(
+    private val oldList: List<MovieModel>,
+    private val newList: List<MovieModel>
+) : DiffUtil.Callback() {
+    override fun getOldListSize(): Int = oldList.size
+
+    override fun getNewListSize(): Int = newList.size
+
+    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        val oldMovie = oldList[oldItemPosition]
+        val newMovie = newList[newItemPosition]
+        return oldMovie.title == newMovie.title
+    }
+
+    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        val oldMovie = oldList[oldItemPosition]
+        val newMovie = newList[newItemPosition]
+        return oldMovie == newMovie
+    }
+}
 
 class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
 
@@ -15,8 +37,10 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
 
     var movies : MutableList<MovieModel> = mutableListOf()
         set (newValue){
+            val diffCallback = MovieDiffCallback(field, newValue)
+            val diffResult = DiffUtil.calculateDiff(diffCallback)
             field = newValue
-            notifyDataSetChanged()
+            diffResult.dispatchUpdatesTo(this)
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
